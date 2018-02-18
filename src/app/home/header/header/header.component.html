@@ -1,0 +1,44 @@
+<header class="header header-center">
+  <div class="container-fluid">
+    <div class="inner-header">SR</div>
+
+    <div class="nav-toggle"><a href="#" data-toggle="collapse" data-target=".inner-navigation" (click)="isNavbarCollapsed = !isNavbarCollapsed"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a></div><!-- Navigation-->
+
+    <div class="inner-navigation collapse" [ngbCollapse]="isNavbarCollapsed">
+      <div class="inner-nav onepage-nav" id="navbarContent">
+        <ul>
+          <li><a href="#home" (click)="isNavbarCollapsed = !isNavbarCollapsed"><span class="menu-item-span">Home</span></a></li>
+          <li><a href="#profile" (click)="isNavbarCollapsed = !isNavbarCollapsed"><span class="menu-item-span">Profile</span></a></li>
+          <li><a href="#portfolio" (click)="isNavbarCollapsed = !isNavbarCollapsed"><span class="menu-item-span">Work</span></a></li>
+          <li><a href="#services" (click)="isNavbarCollapsed = !isNavbarCollapsed"><span class="menu-item-span">Services</span></a></li>
+          <li><a href="#resume" (click)="isNavbarCollapsed = !isNavbarCollapsed"><span class="menu-item-span">Resume</span></a></li>
+          <li><a href="#blog" (click)="isNavbarCollapsed = !isNavbarCollapsed"><span class="menu-item-span">Blog</span></a></li>
+          <li><a href="#contact" (click)="isNavbarCollapsed = !isNavbarCollapsed"><span class="menu-item-span">Connect</span></a></li>
+          <li class="menu-item-has-children"><a href="#"><span class="menu-item-span">Pages</span></a>
+            <ul class="sub-menu">
+              <li class="menu-item-has-children"><a href="#">Blog</a>
+                <ul class="sub-menu">
+                  <li><a href="blog.html" (click)="isNavbarCollapsed = !isNavbarCollapsed">Blog Standard</a></li>
+                  <li><a href="blog-masonry.html" (click)="isNavbarCollapsed = !isNavbarCollapsed">Blog Masonry</a></li>
+                  <li><a href="blog-single.html" (click)="isNavbarCollapsed = !isNavbarCollapsed">Single Post</a></li>
+                </ul>
+              </li>
+              <li class="menu-item-has-children"><a href="#">Portfolio</a>
+                <ul class="sub-menu">
+                  <li><a href="portfolio-single-1.html" (click)="isNavbarCollapsed = !isNavbarCollapsed">Portfolio 1</a></li>
+                  <li><a href="portfolio-single-2.html" (click)="isNavbarCollapsed = !isNavbarCollapsed">Portfolio 2</a></li>
+                  <li><a href="portfolio-single-3.html" (click)="isNavbarCollapsed = !isNavbarCollapsed">Portfolio 3</a></li>
+                  <li><a href="portfolio-single-4.html" (click)="isNavbarCollapsed = !isNavbarCollapsed">Portfolio 4</a></li>
+                  <li><a href="portfolio-single-5.html" (click)="isNavbarCollapsed = !isNavbarCollapsed">Portfolio 5</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li><a href="start.html"><span class="menu-item-span">All Demos</span></a></li>
+        </ul>
+      </div>
+    </div>
+    <!-- Mobile menu-->
+
+  </div>
+</header>
