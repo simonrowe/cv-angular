@@ -19,20 +19,20 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "css/styles.css",
-        "css/animate.css",
-        "css/font-awesome.css",
-        "css/ionicons.css",
-        "css/linea-arrows.css",
-        "css/linea-icons.css",
-        "css/pace-theme-minimal.css",
-        "css/et-line.css",
-        "css/magnific-popup.css",
-        "css/template.css",
-        "css/themify-icons.css",
-        "css/vertical.min.css"
+        "assets/bootstrap/css/bootstrap.css",
+        "assets/css/animate.css",
+        "assets/css/font-awesome.min.css",
+        "assets/css/themify-icons.css",
+        "assets/css/et-line.css",
+        "assets/css/vertical.min.css",
+        "assets/css/template.css"
+
       ],
-      "scripts": [],
+      "scripts": [
+        "../node_modules/jquery/dist/jquery.min.js",
+        "assets/js/jquery-ui.min.js",
+        "assets/js/plugins.js"
+      ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",

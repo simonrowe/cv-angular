@@ -5,7 +5,9 @@ import { HomeComponent} from './home/home/home.component';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './home/header/header/header.component';
 import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {NgbProgressbarModule} from '@ng-bootstrap/ng-bootstrap';
 import { HeadlineComponent} from './home/headline/headline.component';
+import { ProfileComponent } from './home/profile/profile.component';
 
 const routes
 
@@ -19,12 +21,14 @@ const routes
     AppComponent,
     HomeComponent,
     HeaderComponent,
-    HeadlineComponent
+    HeadlineComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    NgbProgressbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
