@@ -8,6 +8,9 @@ import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {NgbProgressbarModule} from '@ng-bootstrap/ng-bootstrap';
 import { HeadlineComponent} from './home/headline/headline.component';
 import { ProfileComponent } from './home/profile/profile.component';
+import { ResumeComponent } from './home/resume/resume.component';
+import { ServicesComponent } from './home/services/services.component';
+import { FooterComponent } from './home/footer/footer.component';
 
 const routes
 
@@ -22,7 +25,10 @@ const routes
     HomeComponent,
     HeaderComponent,
     HeadlineComponent,
-    ProfileComponent
+    ProfileComponent,
+    ResumeComponent,
+    ServicesComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

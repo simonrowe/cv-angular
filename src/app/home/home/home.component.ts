@@ -13,9 +13,18 @@ export class HomeComponent implements OnInit {
 
 
   ngOnInit() {
+
+    $('.page-loader').delay(1500).fadeOut('slow');
+
     this.bindAngularMenu();
     this.headerStyles();
     this.sectionBackgrounds();
+
+    $('.onepage-nav').singlePageNav({
+      filter: ':not(.external)',
+      currentClass: 'active',
+      offset: '58',
+    });
   }
 
   headerStyles() {
