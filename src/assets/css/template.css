@@ -4162,3 +4162,6 @@ a[rel~="gallery"]:hover {
 .widget-social li a:hover {
   background: #EF4836;
 }
+.pointer:hover {
+  cursor: pointer;
+}

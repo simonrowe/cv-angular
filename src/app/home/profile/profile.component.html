@@ -14,35 +14,34 @@
     </div>
     <div class="col-md-4">
       <h5>Profesional Profile</h5>
-      <p>Map where your photos were taken and discover local points of interest. Map where your photos. Map where your photos were taken and discover local points of interest. Map where your photos.</p>
-      <p>Map where your photos were taken and discover local points of interest. Map where your photos. Map where your photos were taken and discover local points of interest. Map where your photos.</p>
+     <p>I am driven to achieve real business value in the shortest time possible through the power of scalable software, utilizing open source technologies.
+     </p><p>
+      With over 13 years of developing, architecting and running java based web applications, my professional experience has spanned many industries from investment banking to media, across multiple countries. My mantra stays the same – keep it simple! Nobody benefits from complicated out of hours releases of monoliths, inherent with risks.
+    </p><p>
+      This is where my skill and passion for Java, Spring, Docker, Cucumber, Git and AWS becomes one of my greatest assets. Whether it be cultivating new development comprising of CI pipelines with zero outage cloud deployments, to architecture of scalable serverless applications at AWS, I have a proven track record of delivering business value whilst mitigating risk.
+    </p>
 
       <div class="profile-widget">
         <h5>Social Profiles</h5>
         <ul class="widget-social">
-          <li><a href="#"><i class="fa fa-github-alt"></i></a></li>
-          <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+          <li><a href="#"><i class="fab fa-github-square fa-lg"></i></a></li>
+          <li><a href="#"><i class="fab fa-linkedin fa-lg"></i></a></li>
         </ul>
       </div>
     </div>
     <div class="col-md-4">
       <h5>My Skills</h5>
-      <div class="progress-item">
-        <div class="progress-title">Gulp</div>
-        <ngb-progressbar type="info" [value]="50" [striped]="true"></ngb-progressbar>
+
+      <div class="progress-item" *ngFor="let skill of skills">
+        <ng-template #popContent>
+          <ul>
+            <li *ngFor="let subskill of skill.skills">{{subskill}}</li>
+          </ul>
+        </ng-template>
+        <div class="progress-title">{{skill.title}} <i class="fas fa-hand-point-right fa-lg pointer" [ngbPopover]="popContent" triggers="mouseenter:mouseleave" placement="right"></i></div>
+        <ngb-progressbar type="{{skill.getProgressColor()}}" [value]="skill.rating" [striped]="true"></ngb-progressbar>
       </div>
-      <div class="progress-item">
-        <div class="progress-title">UX Design</div>
-        <ngb-progressbar type="success" [value]="80" [striped]="true"></ngb-progressbar>
-      </div>
-      <div class="progress-item">
-        <div class="progress-title">HTML / CSS3 / SASS</div>
-        <ngb-progressbar type="warning" [value]="50" [striped]="true"></ngb-progressbar>
-      </div>
-      <div class="progress-item">
-        <div class="progress-title">Gulp</div>
-        <ngb-progressbar type="danger" [value]="20" [striped]="true"></ngb-progressbar>
-      </div>
+
     </div>
   </div>
 </div>

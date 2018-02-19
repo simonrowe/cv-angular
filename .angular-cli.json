@@ -21,7 +21,7 @@
       "styles": [
         "assets/bootstrap/css/bootstrap.css",
         "assets/css/animate.css",
-        "assets/css/font-awesome.min.css",
+        "assets/css/fontawesome-all.min.css",
         "assets/css/themify-icons.css",
         "assets/css/et-line.css",
         "assets/css/vertical.min.css",
