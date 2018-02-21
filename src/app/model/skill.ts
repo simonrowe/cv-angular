@@ -1,8 +1,10 @@
 export class Skill {
 
-  constructor(public title: string, public skills: string[], public rating: number){
+  constructor(public title: string, public rating: number, public skills: Skill[] = []) {
 
   }
+
+
 
   public getProgressColor(): string {
     if (this.rating > 90) {

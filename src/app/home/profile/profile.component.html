@@ -35,7 +35,7 @@
       <div class="progress-item" *ngFor="let skill of skills">
         <ng-template #popContent>
           <ul>
-            <li *ngFor="let subskill of skill.skills">{{subskill}}</li>
+            <li *ngFor="let subskill of skill.skills"><span class="subskill-title">{{subskill.title}}</span> <span  class="subskill-rating"><ngb-rating [(rate)]="subskill.rating"></ngb-rating></span></li>
           </ul>
         </ng-template>
         <div class="progress-title">{{skill.title}} <i class="fas fa-hand-point-right fa-lg pointer" [ngbPopover]="popContent" triggers="mouseenter:mouseleave" placement="right"></i></div>

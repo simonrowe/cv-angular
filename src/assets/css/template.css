@@ -4165,3 +4165,10 @@ a[rel~="gallery"]:hover {
 .pointer:hover {
   cursor: pointer;
 }
+
+.subskill-title {
+  margin-right:12px;
+}
+
+.subskill-rating {
+}
