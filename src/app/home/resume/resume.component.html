@@ -11,101 +11,24 @@
     <div class="row">
       <div class="col-md-12">
         <ul class="timeline">
-          <li>
+          <li *ngFor="let job of jobs">
             <div class="timeline-badge"></div>
             <div class="timeline-panel">
-              <div class="timeline-preview"><img src="assets/images/resume/umpg.png" alt=""></div>
+              <div class="timeline-preview"><img src="{{job.image}}" alt=""></div>
               <div class="timeline-body">
-                <h5 class="timeline-title">Director, Java Development</h5>
-                <h6 class="timeline-description">Universal Music Publishing | Jul 2011 - Present </h6>
-                <p>Responsible for architecture and delivery of greenfield internal and public facing business applications. Super scrum master, removing obstacles for four dynamic scrum teams. Frequent commiter. </p>
-                <p>Re-architecture of multiple monoliths with single points of failure to AWS,
-                resulting in scalable, fault tolerant software reducing the operational cost significantly.
-                </p>
-                <p>Introduced automated testing as a development activity utilising technologies such as cucumber, selenium, docker which allows for far shorter release cycles.</p>
-                <p>Designed the company's first 'serverless' application at AWS, Utilising ECS Fargate, Lambda, SQS, SNS, ElasticSearch, S3. </p>
+                <h5 class="timeline-title">{{job.position}}</h5>
+                <h6 class="timeline-description">{{job.company}} | {{job.period}} </h6>
+                <div [innerHTML]="job.displayedDescription"></div>
+                <div *ngIf="job.elastic">
+                  <p>
+                    <a href="" class="more-less" *ngIf="!job.expanded" (click)="job.expandOrCollapse()">More</a>
+                    <a href="" class="more-less" *ngIf="job.expanded" (click)="job.expandOrCollapse()">Less</a>
+                    ..
+                  </p>
+                </div>
               </div>
             </div>
           </li>
-          <li>
-            <div class="timeline-badge"></div>
-            <div class="timeline-panel">
-              <div class="timeline-preview"><img src="assets/images/resume/workcover.jpg" alt=""></div>
-              <div class="timeline-body">
-                <h5 class="timeline-title">Senior Applications Developer</h5>
-                <h6 class="timeline-description">Workcover Queensland| Nov 2009 -  May 2011</h6>
-                <p>Analysis, Design, Development, Testing &amp; Documentation of enhancements to internal
-                  and external facing web applications within an agile environment</p>
-                <p>Mentoring of less experienced developers</p>
-                <p>Technologies used: JEE, JSP, Spring, Ibatis, Tiles, HTML, JQuery, Oracle, Ruby,
-                  Cucumber, Watir, PowerMock, EasyMock, TeamCity, Weblogic. SVN, DWR, Jasper
-                  Reports, Eclipse, SVN, CVS, Apache FOP, XML, XSLT.</p>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="timeline-badge"></div>
-            <div class="timeline-panel">
-              <div class="timeline-preview"><img src="assets/images/resume/macquarie.png" alt=""></div>
-              <div class="timeline-body">
-                <h5 class="timeline-title">Analyst/ Programmer</h5>
-                <h6 class="timeline-description">Macquarie Group | Feb 2008 - Nov 2009</h6>
-                <p>Design, Build, Test &amp; Document new software solutions across the Risk Management
-                  Group</p>
-                <p>Maintain and Enhance existing systems.</p>
-                <p>Mentoring of junior developers.</p>
-                <p>Technologies Used: JEE, Java, JSP, HTML, JQuery, Dojo, Spring, Hibernate, Sybase,
-                HSQLDB, SQL Server, Tiles, JUnit, Selenium, PHP</p>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="timeline-badge"></div>
-            <div class="timeline-panel">
-              <div class="timeline-preview"><img src="assets/images/resume/sas.png" alt=""></div>
-              <div class="timeline-body">
-                <h5 class="timeline-title">Junior Applications Developer</h5>
-                <h6 class="timeline-description">SAS Asia Pacific | Oct 2006 - Feb 2008 </h6>
-                <p>Design, Development, Testing and Documentation of the Synapse internal business
-                  software.</p>
-                <p>3rd Level Support</p>
-                <p>Technologies Used: SAS, Java, JSP, JEE, Spring, Struts, Web Services, XFire.</p>
-              </div>
-
-            </div>
-          </li>
-
-          <li>
-            <div class="timeline-badge"></div>
-            <div class="timeline-panel">
-              <div class="timeline-preview"><img src="assets/images/resume/civica.jpg" alt=""></div>
-              <div class="timeline-body">
-                <h5 class="timeline-title">Graduate Developer</h5>
-                <h6 class="timeline-description">Civica | Jan 2005 - Sep 2006</h6>
-                <p>Design, Development, Testing and Documentation of the Authority application.
-                </p><p>3rd Level Support &amp; Maintenance duties.
-                </p><p>Technologies Used: Java, JEE, Informix 4GL, Informix, Oracle, SQL Server, VBA, Crystal
-                Reports</p>
-                  </div>
-            </div>
-          </li>
-          <li>
-            <div class="timeline-badge"></div>
-            <div class="timeline-panel">
-              <div class="timeline-preview"><img src="assets/images/resume/uon.png" alt=""></div>
-              <div class="timeline-body">
-                <h5 class="timeline-title">Computer Science</h5>
-                <h6 class="timeline-description">University of Newcastle | 2002 - 2004</h6>
-                <p>Awards: Object Technology Prize 2004, Nextgen.net prize
-                  2003, Deans Merit List (2002-2004), Deans Achievement Award 2002.</p>
-                <p>WAM (Weighted Average Mark) : 81.24</p>
-              </div>
-            </div>
-          </li>
-
-
-
-
           <div class="timeline-top"></div>
         </ul>
         <div class="text-center"><a class="btn btn-lg btn-gray" href="/assets/SimonRowe.doc"><span>Download CV</span></a></div>

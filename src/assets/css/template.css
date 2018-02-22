@@ -4172,3 +4172,8 @@ a[rel~="gallery"]:hover {
 
 .subskill-rating {
 }
+
+a.more-less {
+  cursor: pointer;
+  color: #0cb4ce;
+}
