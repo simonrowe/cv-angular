@@ -11,6 +11,8 @@ import { ProfileComponent } from './home/profile/profile.component';
 import { ResumeComponent } from './home/resume/resume.component';
 import { ServicesComponent } from './home/services/services.component';
 import { FooterComponent } from './home/footer/footer.component';
+import { BlogComponent } from './home/blog/blog.component';
+import { ComingSoonComponent } from './home/coming-soon/coming-soon.component';
 
 const routes
 
@@ -28,7 +30,9 @@ const routes
     ProfileComponent,
     ResumeComponent,
     ServicesComponent,
-    FooterComponent
+    FooterComponent,
+    BlogComponent,
+    ComingSoonComponent
   ],
   imports: [
     BrowserModule,
