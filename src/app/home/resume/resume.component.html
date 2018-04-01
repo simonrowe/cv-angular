@@ -1,0 +1,38 @@
+<section class="module module-gray" id="resume">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="m-title c-align">
+          <h2>Resume</h2>
+          <h6>My education and experience</h6>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <ul class="timeline">
+          <li *ngFor="let job of jobs">
+            <div class="timeline-badge"></div>
+            <div class="timeline-panel">
+              <div class="timeline-preview"><img src="{{job.image}}" alt=""></div>
+              <div class="timeline-body">
+                <h5 class="timeline-title">{{job.position}}</h5>
+                <h6 class="timeline-description">{{job.company}} | {{job.period}} </h6>
+                <div [innerHTML]="job.displayedDescription"></div>
+                <div *ngIf="job.elastic">
+                  <p>
+                    <a href="" class="more-less" *ngIf="!job.expanded" (click)="job.expandOrCollapse()">More</a>
+                    <a href="" class="more-less" *ngIf="job.expanded" (click)="job.expandOrCollapse()">Less</a>
+                    ..
+                  </p>
+                </div>
+              </div>
+            </div>
+          </li>
+          <div class="timeline-top"></div>
+        </ul>
+        <div class="text-center"><a class="btn btn-lg btn-gray" href="/assets/SimonRowe.doc"><span>Download CV</span></a></div>
+      </div>
+    </div>
+  </div>
+</section>

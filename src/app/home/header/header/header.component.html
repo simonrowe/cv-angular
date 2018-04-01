@@ -1,0 +1,17 @@
+<header class="header header-center">
+  <div class="container-fluid">
+    <div class="nav-toggle"><a href="#" data-toggle="collapse" data-target=".inner-navigation" (click)="isNavbarCollapsed = !isNavbarCollapsed"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a></div><!-- Navigation-->
+
+    <div class="inner-navigation collapse" [ngbCollapse]="isNavbarCollapsed">
+      <div class="inner-nav onepage-nav" id="navbarContent">
+        <ul>
+          <li><a href="#home" (click)="isNavbarCollapsed = !isNavbarCollapsed"><span class="menu-item-span">Home</span></a></li>
+          <li><a href="#profile" (click)="isNavbarCollapsed = !isNavbarCollapsed"><span class="menu-item-span">Profile</span></a></li>
+          <li><a href="#resume" (click)="isNavbarCollapsed = !isNavbarCollapsed"><span class="menu-item-span">Resume</span></a></li>
+         </ul>
+      </div>
+    </div>
+    <!-- Mobile menu-->
+
+  </div>
+</header>

@@ -1,0 +1,48 @@
+<section class="module" id="profile">
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="m-title c-align">
+        <h2>Simon Rowe</h2>
+        <h6>Agile Software Engineer – Utilising Java, Spring, Angular & AWS to architect and deliver enterprise software solutions</h6>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <p><img src="assets/images/simon.jpg" alt=""></p>
+    </div>
+    <div class="col-md-4">
+      <h5>Profesional Profile</h5>
+     <p>I am driven to achieve real business value in the shortest time possible through the power of scalable software, utilizing open source technologies, mainly surrounding java and the spring framework.
+     </p><p>
+      With over 13 years of developing, architecting and running java based web applications, my professional experience has spanned many industries from investment banking to media, across multiple countries. My mantra stays the same – keep it simple! Nobody benefits from complicated out of hours releases of monoliths, inherent with risks.
+    </p><p>
+      This is where my skill and passion for Java, Spring, Docker, Cucumber, Git and AWS becomes one of my greatest assets. Whether it be cultivating new development comprising of CI pipelines with zero outage cloud deployments, to architecture of scalable serverless applications at AWS, I have a proven track record of delivering business value whilst mitigating risk.
+    </p>
+
+      <div class="profile-widget">
+        <h5>Social Profiles</h5>
+        <ul class="widget-social">
+          <li><a target="_blank" href=""><i class="fab fa-github-square fa-lg"></i></a></li>
+          <li><a target="_blank" href="https://www.linkedin.com/in/simon-rowe-2a94ab1/"><i class="fab fa-linkedin fa-lg"></i></a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <h5>My Skills</h5>
+
+      <div class="progress-item" *ngFor="let skill of skills">
+        <ng-template #popContent>
+          <ul>
+            <li *ngFor="let subskill of skill.skills"><span class="subskill-title">{{subskill.title}}</span> <span  class="subskill-rating"><ngb-rating [(rate)]="subskill.rating"></ngb-rating></span></li>
+          </ul>
+        </ng-template>
+        <div class="progress-title">{{skill.title}} <i class="fas fa-hand-point-right fa-lg pointer" [ngbPopover]="popContent" triggers="mouseenter:mouseleave" placement="right"></i></div>
+        <ngb-progressbar type="{{skill.getProgressColor()}}" [value]="skill.rating" [striped]="true"></ngb-progressbar>
+      </div>
+
+    </div>
+  </div>
+</div>
+</section>
