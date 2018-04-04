@@ -36,6 +36,8 @@
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",
+        "cf": "environments/environment.cf.ts",
+        "cf-cloud": "environments/environment.cf-cloud.ts",
         "prod": "environments/environment.prod.ts"
       }
     }

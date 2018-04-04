@@ -1913,7 +1913,7 @@ button {
     margin: 0;
 }
 
-.inner-nav > ul > li {
+.inner-nav > ul > li, .inner-nav > ul > app-login > li {
     position: relative;
     display: inline-block;
     height: 100%;
@@ -1921,7 +1921,7 @@ button {
     margin: 0;
 }
 
-.inner-nav > ul > li > a {
+.inner-nav > ul > li > a, .inner-nav > ul > app-login > li > a {
     position: relative;
     display: inline-block;
     width: 100%;
@@ -1931,7 +1931,7 @@ button {
     color: #fff;
 }
 
-.inner-nav > ul > li > a > .menu-item-span {
+.inner-nav > ul > li > a > .menu-item-span, .inner-nav > ul > app-login > li > a > .menu-item-span {
     position: relative;
     display: block;
     top: 50%;
@@ -1964,16 +1964,16 @@ button {
     display: none;
 }
 
-.header .inner-nav > ul > li > a {
+.header .inner-nav > ul > li > a, .header .inner-nav > ul > app-login > li > a {
     color: #b7b7b7;
 }
 
-.header .inner-nav > ul > li > a:hover,
-.header .inner-nav > ul > li > a:focus {
+.header .inner-nav > ul > li > a:hover, .header .inner-nav > ul > app-login > li > a:hover,
+.header .inner-nav > ul > li > a:focus, .header .inner-nav > ul > app-login >li > a:focus {
     color: rgba(102, 102, 102, .7);
 }
 
-.header .inner-nav > ul > li.sub-menu-open > a {
+.header .inner-nav > ul > li.sub-menu-open > a, header .inner-nav > ul > app-login > li.sub-menu-open > a {
     color: rgba(102, 102, 102, .7);
 }
 
@@ -1985,16 +1985,16 @@ button {
     display: inline-block;
 }
 
-.header-light .inner-nav > ul > li > a {
+.header-light .inner-nav > ul > li > a, .header-light .inner-nav > ul > app-login > li > a {
     color: #fff;
 }
 
-.header-light .inner-nav > ul > li > a:hover,
-.header-light .inner-nav > ul > li > a:focus {
+.header-light .inner-nav > ul > li > a:hover,.header-light .inner-nav > ul > app-login > li > a:hover,
+.header-light .inner-nav > ul > li > a:focus, .header-light .inner-nav > ul > app-login > li > a:focus {
     color: rgba(255, 255, 255, .7);
 }
 
-.header-light .inner-nav > ul > li.sub-menu-open > a {
+.header-light .inner-nav > ul > li.sub-menu-open > a, .header-light .inner-nav > ul > app-login > li.sub-menu-open > a {
     color: rgba(255, 255, 255, .7);
 }
 
@@ -2006,17 +2006,17 @@ button {
     display: none;
 }
 
-.header.header-small .inner-nav > ul > li > a {
+.header.header-small .inner-nav > ul > li > a, .header.header-small .inner-nav > ul > app-login > li > a {
     color: #9c9c9c;
 }
 
-.header.header-small .inner-nav > ul > li > a:hover,
-.header.header-small .inner-nav > ul > li > a:focus,
-.header.header-small .inner-nav > ul > li > a.active {
+.header.header-small .inner-nav > ul > li > a:hover, .header.header-small .inner-nav > ul > app-login >li > a:hover,
+.header.header-small .inner-nav > ul > li > a:focus, .header.header-small .inner-nav > ul > app-login >li > a:focus,
+.header.header-small .inner-nav > ul > li > a.active, .header.header-small .inner-nav > ul > app-login > li > a.active{
     color: #e41919;
 }
 
-.header.header-small .inner-nav > ul > li.sub-menu-open > a {
+.header.header-small .inner-nav > ul > li.sub-menu-open > a, header.header-small .inner-nav > ul > app-login > li.sub-menu-open > a {
     color: #e41919;
 }
 
@@ -4176,4 +4176,8 @@ a[rel~="gallery"]:hover {
 a.more-less {
   cursor: pointer;
   color: #0cb4ce;
+}
+
+.fas:hover {
+  cursor: pointer;
 }

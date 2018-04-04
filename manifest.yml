@@ -1,0 +1,12 @@
+applications:
+- name: cv-web-app
+  memory: 128M
+  instances: 1
+  path: dist/
+  buildpack: staticfile_buildpack
+  disk_quota: 256M
+
+
+
+
+
