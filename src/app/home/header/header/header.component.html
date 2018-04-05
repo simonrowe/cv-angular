@@ -8,7 +8,8 @@
           <li><a href="#home" (click)="isNavbarCollapsed = !isNavbarCollapsed"><span class="menu-item-span">Home</span></a></li>
           <li><a href="#profile" (click)="isNavbarCollapsed = !isNavbarCollapsed"><span class="menu-item-span">Profile</span></a></li>
           <li><a href="#resume" (click)="isNavbarCollapsed = !isNavbarCollapsed"><span class="menu-item-span">Resume</span></a></li>
-         </ul>
+          <app-login [user]="user"></app-login>
+        </ul>
       </div>
     </div>
     <!-- Mobile menu-->

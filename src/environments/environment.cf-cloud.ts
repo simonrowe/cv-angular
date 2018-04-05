@@ -6,6 +6,6 @@
 export const environment = {
   production: false,
   openIdClientId: '662734130754-62onvhmtrcgs3llm6c0smfg27v03l12i.apps.googleusercontent.com',
-  oauthRedirectUrl: 'http://localhost:4200',
-  userInfo : 'http://localhost:8080/user'
+  oauthRedirectUrl: 'https://cv-web-app.cfapps.io',
+  userInfo : 'https://cv-user-service.cfapps.io/user'
 };

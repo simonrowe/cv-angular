@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { Skill} from '../../model/skill';
+import {User} from '../../model/user';
+import {isNullOrUndefined} from "util";
 
 @Component({
   selector: 'app-profile',
@@ -7,6 +9,8 @@ import { Skill} from '../../model/skill';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
+
+  @Input() user: User;
 
   public skills: Skill[];
 
@@ -32,6 +36,10 @@ export class ProfileComponent implements OnInit {
     new Skill('UI', 80, [new Skill('Angular JS', 7.5), new Skill('Angular', 8.5), new Skill('HTML5', 7.5),
       new Skill('CSS3', 7.5), new Skill('JQuery', 8.5), new Skill('Javascript', 8),
       new Skill('TypeScript', 8), new Skill('JSTL', 9.5)])];
+  }
+
+  public canEdit(): boolean {
+    return !isNullOrUndefined(this.user) && this.user.admin;
   }
 
 }

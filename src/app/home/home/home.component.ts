@@ -1,6 +1,8 @@
 import 'rxjs/add/operator/finally';
 
 import { Component, OnInit } from '@angular/core';
+import {AuthenticationServiceService} from "../../service/authentication-service.service";
+import {User} from '../../model/user';
 declare var jQuery : any;
 declare var $ : any;
 
@@ -10,6 +12,15 @@ declare var $ : any;
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+
+
+  user: User;
+
+  constructor(private authenticationService: AuthenticationServiceService) {
+      this.authenticationService.authenticationEventEmmitter.subscribe((loginEvent: string) => {
+          this.user = this.authenticationService.getAuthenticatedUser();
+      });
+  }
 
 
   ngOnInit() {

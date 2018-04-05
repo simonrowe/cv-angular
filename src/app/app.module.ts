@@ -13,11 +13,13 @@ import { ServicesComponent } from './home/services/services.component';
 import { FooterComponent } from './home/footer/footer.component';
 import { BlogComponent } from './home/blog/blog.component';
 import { ComingSoonComponent } from './home/coming-soon/coming-soon.component';
+import { OAuthModule, AuthConfig} from 'angular-oauth2-oidc';
+import {LoginComponent} from './home/login/login.component';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
+import {CustomHttpInterceptorService} from './service/custom-http-interceptor.service';
+import {AuthenticationServiceService} from './service/authentication-service.service';
 
-const routes
-
-
-: Routes = [
+const routes: Routes = [
   { path: '', component: HomeComponent }
 ];
 
@@ -32,15 +34,25 @@ const routes
     ServicesComponent,
     FooterComponent,
     BlogComponent,
-    ComingSoonComponent
+    ComingSoonComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
     NgbModule.forRoot(),
-    NgbProgressbarModule
+    NgbProgressbarModule,
+    HttpClientModule,
+    OAuthModule.forRoot(),
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: CustomHttpInterceptorService,
+      multi: true
+  },
+    AuthenticationServiceService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
