@@ -8,5 +8,6 @@ export const environment = {
   openIdClientId: '662734130754-62onvhmtrcgs3llm6c0smfg27v03l12i.apps.googleusercontent.com',
   oauthRedirectUrl: 'http://cv-web-app.local.pcfdev.io',
   userInfo : 'http://cv-user-service.local.pcfdev.io/user',
-  headline : 'http://cv-user-service.local.pcfdev.io/profile/headline'
+  headline : 'http://cv-user-service.local.pcfdev.io/profile/headline',
+  killSwitch: 'https://cv-user-service.local.pcfdev.io/actuator/shutdown'
 };

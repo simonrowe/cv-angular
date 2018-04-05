@@ -5,6 +5,7 @@
     <div class="inner-navigation collapse" [ngbCollapse]="isNavbarCollapsed">
       <div class="inner-nav onepage-nav" id="navbarContent">
         <ul>
+          <li *ngIf="canKill()"><a href="#home" (click)="isNavbarCollapsed = !isNavbarCollapsed;kill()"><span class="menu-item-span">Kill Switch</span></a></li>
           <li><a href="#home" (click)="isNavbarCollapsed = !isNavbarCollapsed"><span class="menu-item-span">Home</span></a></li>
           <li><a href="#profile" (click)="isNavbarCollapsed = !isNavbarCollapsed"><span class="menu-item-span">Profile</span></a></li>
           <li><a href="#resume" (click)="isNavbarCollapsed = !isNavbarCollapsed"><span class="menu-item-span">Resume</span></a></li>

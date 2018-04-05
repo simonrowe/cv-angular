@@ -8,5 +8,6 @@ export const environment = {
   openIdClientId: '662734130754-62onvhmtrcgs3llm6c0smfg27v03l12i.apps.googleusercontent.com',
   oauthRedirectUrl: 'http://localhost:4200',
   userInfo : 'http://localhost:8080/user',
-  headline : 'http://localhost:8080/profile/headline'
+  headline : 'http://localhost:8080/profile/headline',
+  killSwitch: 'http://localhost:8080/actuator/shutdown'
 };
