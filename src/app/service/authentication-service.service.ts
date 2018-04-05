@@ -1,7 +1,7 @@
-import {EventEmitter, Injectable} from '@angular/core';
+import {EventEmitter, Injectable, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {User} from '../model/user';
-import {isNullOrUndefined} from 'util';
+import {isNullOrUndefined, isUndefined} from 'util';
 import {environment} from '../../environments/environment';
 import {OAuthService} from 'angular-oauth2-oidc';
 
@@ -11,6 +11,14 @@ export class AuthenticationServiceService {
   public authenticationEventEmmitter: EventEmitter<string> = new EventEmitter();
 
   constructor(private http: HttpClient, private oAuthService: OAuthService) { }
+
+  private getLocalStorageItem(key: string): string {
+    const value = localStorage.getItem(key);
+    if ( value === 'null') {
+      return null;
+    }
+    return value;
+  }
 
   public attemptAuthentication(): void {
       localStorage.setItem('Authorization', this.oAuthService.getIdToken());
@@ -26,14 +34,14 @@ export class AuthenticationServiceService {
   }
 
   public getAuthenticatedUser(): User {
-    if (isNullOrUndefined(localStorage.getItem('user'))) {
+    if (this.getLocalStorageItem('user') == null) {
       return null;
     }
-    return JSON.parse(localStorage.getItem('user'));
+    return JSON.parse(this.getLocalStorageItem('user'));
   }
 
   public isAuthenticated(): boolean {
-    return !isNullOrUndefined(this.getAuthenticatedUser());
+    return this.getAuthenticatedUser() != null;
   }
 
   public hasAdminAccess(): boolean {
@@ -41,7 +49,7 @@ export class AuthenticationServiceService {
   }
 
   public jwtToken(): string {
-    return localStorage.getItem('Authorization');
+    return this.getLocalStorageItem('Authorization');
   }
 
   public logout(): void{

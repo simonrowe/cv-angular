@@ -18,6 +18,7 @@ import {LoginComponent} from './home/login/login.component';
 import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import {CustomHttpInterceptorService} from './service/custom-http-interceptor.service';
 import {AuthenticationServiceService} from './service/authentication-service.service';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 const routes: Routes = [
   { path: '', component: HomeComponent }
@@ -43,6 +44,8 @@ const routes: Routes = [
     NgbModule.forRoot(),
     NgbProgressbarModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
     OAuthModule.forRoot(),
   ],
   providers: [

@@ -1,7 +1,12 @@
 import {Component, Input, OnInit} from '@angular/core';
 import { Skill} from '../../model/skill';
 import {User} from '../../model/user';
-import {isNullOrUndefined} from "util";
+import {isNullOrUndefined} from 'util';
+import {HttpClient} from '@angular/common/http';
+import {Headline} from '../../model/headline';
+import {environment} from '../../../environments/environment';
+import {FormBuilder, FormGroup} from '@angular/forms';
+import {AuthenticationServiceService} from '../../service/authentication-service.service';
 
 @Component({
   selector: 'app-profile',
@@ -13,10 +18,20 @@ export class ProfileComponent implements OnInit {
   @Input() user: User;
 
   public skills: Skill[];
+  headline: string;
+  headlineForm: FormGroup;
+  profileEditing: boolean = false;
 
-  constructor() { }
+  constructor(private http: HttpClient, private fb: FormBuilder) {
+    this.headlineForm = fb.group({
+      'headline':  ['']
+    });
+  }
 
   ngOnInit() {
+    this.http.get(environment.headline).subscribe((headline: Headline) => {
+      this.headline = headline.headline;
+    });
     this.skills = [new Skill('Java', 92,[new Skill('1.4', 8), new Skill('5', 8),  new Skill('6', 8),
       new Skill ('7', 9.5), new Skill('8', 9)]),
     new Skill('Spring', 95,[new Skill('Boot', 9.5), new Skill('Cloud', 8), new Skill('Data', 9.5),
@@ -36,10 +51,19 @@ export class ProfileComponent implements OnInit {
     new Skill('UI', 80, [new Skill('Angular JS', 7.5), new Skill('Angular', 8.5), new Skill('HTML5', 7.5),
       new Skill('CSS3', 7.5), new Skill('JQuery', 8.5), new Skill('Javascript', 8),
       new Skill('TypeScript', 8), new Skill('JSTL', 9.5)])];
+
+
   }
 
   public canEdit(): boolean {
     return !isNullOrUndefined(this.user) && this.user.admin;
+  }
+
+  public save(): void {
+    this.http.post(environment.headline + '/save', new Headline(this.headline)).subscribe(() => {
+      this.profileEditing = false;
+      alert('Headline has been saved');
+    });
   }
 
 }

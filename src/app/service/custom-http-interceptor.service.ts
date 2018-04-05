@@ -8,6 +8,7 @@ import { HttpEvent } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
 import 'rxjs/add/observable/fromPromise';
 import {Observable} from 'rxjs/Observable';
+import {isNullOrUndefined} from 'util';
 
 @Injectable()
 export class CustomHttpInterceptorService implements HttpInterceptor {
@@ -27,7 +28,7 @@ export class CustomHttpInterceptorService implements HttpInterceptor {
     for (const key of request.headers.keys()) {
       headerSettings[key] = request.headers.getAll(key);
     }
-    if (token) {
+    if (!isNullOrUndefined(token) && token != 'null') {
       headerSettings['Authorization'] = 'Bearer ' + token;
     }
     headerSettings['Content-Type'] = 'application/json';

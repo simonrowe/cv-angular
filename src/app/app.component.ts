@@ -15,7 +15,7 @@ export class AppComponent {
 
   constructor(private oauthService: OAuthService, private authenticationService: AuthenticationServiceService) {
     this.oauthService.configure(noDiscoveryAuthConfig);
-
+    this.authenticationService.logout();
     this.oauthService.tryLogin().then(() => {
       console.log('id token', this.oauthService.getIdToken());
       this.authenticationService.attemptAuthentication();
