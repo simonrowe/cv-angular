@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {JwksValidationHandler, OAuthService} from 'angular-oauth2-oidc';
 import {noDiscoveryAuthConfig} from './auth-no-discovery.config';
-import {AuthenticationServiceService} from './service/authentication-service.service';
+import { AuthenticationService} from './service/authentication.service';
 
 
 
@@ -13,7 +13,7 @@ import {AuthenticationServiceService} from './service/authentication-service.ser
 })
 export class AppComponent {
 
-  constructor(private oauthService: OAuthService, private authenticationService: AuthenticationServiceService) {
+  constructor(private oauthService: OAuthService, private authenticationService: AuthenticationService) {
     this.oauthService.configure(noDiscoveryAuthConfig);
     this.authenticationService.logout();
     this.oauthService.tryLogin().then(() => {

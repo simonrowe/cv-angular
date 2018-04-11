@@ -1,4 +1,4 @@
-import {AuthenticationServiceService} from './authentication-service.service';
+import {AuthenticationService} from './authentication.service';
 import { Injectable } from '@angular/core';
 import { HttpInterceptor } from '@angular/common/http';
 import { HttpRequest } from '@angular/common/http';
@@ -12,7 +12,7 @@ import {isNullOrUndefined} from 'util';
 
 @Injectable()
 export class CustomHttpInterceptorService implements HttpInterceptor {
-  constructor(private authenticationService: AuthenticationServiceService) {}
+  constructor(private authenticationService: AuthenticationService) {}
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return Observable.fromPromise(this.handleAccess(request, next));

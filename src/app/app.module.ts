@@ -13,11 +13,10 @@ import { ServicesComponent } from './home/services/services.component';
 import { FooterComponent } from './home/footer/footer.component';
 import { BlogComponent } from './home/blog/blog.component';
 import { ComingSoonComponent } from './home/coming-soon/coming-soon.component';
-import { OAuthModule, AuthConfig} from 'angular-oauth2-oidc';
-import {LoginComponent} from './home/login/login.component';
+import { OAuthModule} from 'angular-oauth2-oidc';
 import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import {CustomHttpInterceptorService} from './service/custom-http-interceptor.service';
-import {AuthenticationServiceService} from './service/authentication-service.service';
+import {AuthenticationService} from './service/authentication.service';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 const routes: Routes = [
@@ -35,8 +34,7 @@ const routes: Routes = [
     ServicesComponent,
     FooterComponent,
     BlogComponent,
-    ComingSoonComponent,
-    LoginComponent
+    ComingSoonComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +52,7 @@ const routes: Routes = [
       useClass: CustomHttpInterceptorService,
       multi: true
   },
-    AuthenticationServiceService
+    AuthenticationService
   ],
   bootstrap: [AppComponent]
 })

@@ -2,14 +2,16 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
+      <ngb-alert *ngIf="headlineSuccessMessage" type="success" (close)="headlineSuccessMessage = null">{{ headlineSuccessMessage }}</ngb-alert>
       <div class="m-title c-align">
         <h2>Simon Rowe</h2>
-        <h6 *ngIf="!profileEditing">{{headline}} <i *ngIf="canEdit()" class="fas fa-edit" (click)="profileEditing=true;"></i></h6>
-        <h6 *ngIf="profileEditing"><form [formGroup]="headlineForm"
-                  (ngSubmit)="save(headlineForm.value)"
-                  class="ui form"><input type="text" id="headlineText" style="width:100%"
-                                          [formControl]="headlineForm.get('headline')"
-                                          [(ngModel)]="headline" /></form></h6>
+        <h6 [hidden]="headlineEdit">{{headline.headline}} <i *ngIf="canEdit()" class="fas fa-edit" (click)="toggleHeadlineEdit()"></i></h6>
+
+        <form [hidden]="!headlineEdit" [formGroup]="headlineForm"
+                  (ngSubmit)="save()"
+                  class="ui form">  <div class="input-group" ><input type="text" id="headlineInput" class="form-control"
+                                                                     [ngModelOptions]="{standalone: true}"
+                                          [(ngModel)]="headline.headline" /></div></form>
       </div>
     </div>
   </div>

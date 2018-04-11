@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {AfterViewChecked, Component, Input, OnInit, Renderer2} from '@angular/core';
 import { Skill} from '../../model/skill';
 import {User} from '../../model/user';
 import {isNullOrUndefined} from 'util';
@@ -6,31 +6,40 @@ import {HttpClient} from '@angular/common/http';
 import {Headline} from '../../model/headline';
 import {environment} from '../../../environments/environment';
 import {FormBuilder, FormGroup} from '@angular/forms';
-import {AuthenticationServiceService} from '../../service/authentication-service.service';
+import {Subject} from 'rxjs/Subject';
+import {debounceTime} from 'rxjs/operator/debounceTime';
+
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
-export class ProfileComponent implements OnInit {
+export class ProfileComponent implements OnInit, AfterViewChecked {
+
 
   @Input() user: User;
 
   public skills: Skill[];
-  headline: string;
+  headline: Headline;
   headlineForm: FormGroup;
-  profileEditing: boolean = false;
+  headlineSuccessMessage: string;
+  private _headlineSuccess = new Subject<string>();
+  headlineEdit: boolean = false;
 
-  constructor(private http: HttpClient, private fb: FormBuilder) {
+  constructor(private http: HttpClient, private fb: FormBuilder, private renderer: Renderer2) {
     this.headlineForm = fb.group({
-      'headline':  ['']
     });
+  }
+  ngAfterViewChecked(): void {
+    if (this.headlineEdit) {
+      this.renderer.selectRootElement('#headlineInput').focus();
+    }
   }
 
   ngOnInit() {
     this.http.get(environment.headline).subscribe((headline: Headline) => {
-      this.headline = headline.headline;
+      this.headline = headline;
     });
     this.skills = [new Skill('Java', 92,[new Skill('1.4', 8), new Skill('5', 8),  new Skill('6', 8),
       new Skill ('7', 9.5), new Skill('8', 9)]),
@@ -51,7 +60,8 @@ export class ProfileComponent implements OnInit {
     new Skill('UI', 80, [new Skill('Angular JS', 7.5), new Skill('Angular', 8.5), new Skill('HTML5', 7.5),
       new Skill('CSS3', 7.5), new Skill('JQuery', 8.5), new Skill('Javascript', 8),
       new Skill('TypeScript', 8), new Skill('JSTL', 9.5)])];
-
+    this._headlineSuccess.subscribe((message) => this.headlineSuccessMessage = message);
+    debounceTime.call(this._headlineSuccess, 3000).subscribe(() => this.headlineSuccessMessage = null);
 
   }
 
@@ -60,10 +70,14 @@ export class ProfileComponent implements OnInit {
   }
 
   public save(): void {
-    this.http.post(environment.headline + '/save', new Headline(this.headline)).subscribe(() => {
-      this.profileEditing = false;
-      alert('Headline has been saved');
+    this.http.post(environment.headline + '/save', this.headline).subscribe(() => {
+      this.headlineEdit = false;
+      this._headlineSuccess.next('Headline saved sucessfully');
     });
+  }
+
+  public toggleHeadlineEdit(): void {
+    this.headlineEdit = !this.headlineEdit;
   }
 
 }

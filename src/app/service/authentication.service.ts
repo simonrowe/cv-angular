@@ -6,7 +6,7 @@ import {environment} from '../../environments/environment';
 import {OAuthService} from 'angular-oauth2-oidc';
 
 @Injectable()
-export class AuthenticationServiceService {
+export class AuthenticationService {
 
   public authenticationEventEmmitter: EventEmitter<string> = new EventEmitter();
 

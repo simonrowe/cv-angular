@@ -1,7 +1,7 @@
 import 'rxjs/add/operator/finally';
 
 import { Component, OnInit } from '@angular/core';
-import {AuthenticationServiceService} from "../../service/authentication-service.service";
+import {AuthenticationService} from "../../service/authentication.service";
 import {User} from '../../model/user';
 declare var jQuery : any;
 declare var $ : any;
@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit {
 
   user: User;
 
-  constructor(private authenticationService: AuthenticationServiceService) {
+  constructor(private authenticationService: AuthenticationService) {
       this.authenticationService.authenticationEventEmmitter.subscribe((loginEvent: string) => {
           this.user = this.authenticationService.getAuthenticatedUser();
       });

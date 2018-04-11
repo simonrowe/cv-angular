@@ -1,8 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {User} from '../../../model/user';
-import {HttpClient} from '@angular/common/http';
-import {AuthenticationServiceService} from '../../../service/authentication-service.service';
-import {environment} from '../../../../environments/environment';
+import {AuthenticationService} from '../../../service/authentication.service';
+import {OAuthService} from 'angular-oauth2-oidc';
 
 @Component({
   selector: 'app-header',
@@ -15,19 +14,23 @@ export class HeaderComponent implements OnInit {
 
   isNavbarCollapsed: boolean = true;
 
-  constructor(private http: HttpClient, private authentiationService: AuthenticationServiceService) { }
+  constructor(private oAuthService: OAuthService,
+              private authenticationService: AuthenticationService) { }
 
   ngOnInit() {
   }
 
-  public canKill(): boolean {
-    return this.authentiationService.hasAdminAccess();
+  public login(): void {
+    this.oAuthService.initImplicitFlow();
   }
 
-  public kill(): void {
-    this.http.post(environment.killSwitch, {}).subscribe(() => {
-      alert('We have killed out microservice');
-    });
+  public logout(): void {
+    this.oAuthService.logOut();
+    this.authenticationService.logout();
+  }
+
+  public authenticated(): boolean {
+    return this.authenticationService.isAuthenticated();
   }
 
 
