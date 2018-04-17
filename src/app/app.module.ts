@@ -19,6 +19,7 @@ import {CustomHttpInterceptorService} from './service/custom-http-interceptor.se
 import {AuthenticationService} from './service/authentication.service';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ProfileHeadlineComponent} from './home/profile/headline/headline.component';
+import { AlertComponent } from './common/alert/alert.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent }
@@ -36,7 +37,8 @@ const routes: Routes = [
     FooterComponent,
     BlogComponent,
     ComingSoonComponent,
-    ProfileHeadlineComponent
+    ProfileHeadlineComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,

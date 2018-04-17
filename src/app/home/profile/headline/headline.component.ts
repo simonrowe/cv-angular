@@ -7,6 +7,7 @@ import {HttpClient} from '@angular/common/http';
 import {environment} from '../../../../environments/environment';
 import {isNullOrUndefined} from 'util';
 import {debounceTime} from 'rxjs/operator/debounceTime';
+import {Alert} from '../../../common/alert';
 
 @Component({
   selector: 'app-profile-headline',
@@ -17,12 +18,10 @@ export class ProfileHeadlineComponent implements OnInit, AfterViewChecked {
 
   @Input() user: User;
 
+  public alert = new Subject<Alert>();
 
   headline: Headline = new Headline('');
-
   headlineForm: FormGroup;
-  headlineSuccessMessage: string;
-  private _headlineSuccess = new Subject<string>();
   headlineEdit: boolean = false;
 
 
@@ -41,11 +40,6 @@ export class ProfileHeadlineComponent implements OnInit, AfterViewChecked {
     this.http.get(environment.headline).subscribe((headline: Headline) => {
       this.headline = headline;
     });
-
-
-    this._headlineSuccess.subscribe((message) => this.headlineSuccessMessage = message);
-    debounceTime.call(this._headlineSuccess, 3000).subscribe(() => this.headlineSuccessMessage = null);
-
   }
 
   public canEdit(): boolean {
@@ -55,7 +49,7 @@ export class ProfileHeadlineComponent implements OnInit, AfterViewChecked {
   public save(): void {
     this.http.post(environment.headline + '/save', this.headline).subscribe(() => {
       this.headlineEdit = false;
-      this._headlineSuccess.next('Headline saved sucessfully');
+      this.alert.next(new Alert('success', 'Headline saved sucessfully'));
     });
   }
 
