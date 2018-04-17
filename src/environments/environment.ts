@@ -9,5 +9,6 @@ export const environment = {
   oauthRedirectUrl: 'http://localhost:4200',
   userInfo : 'http://localhost:8080/user',
   headline : 'http://localhost:8080/profile/headline',
+  profileDescription : 'http://localhost:8080/profile/description',
   killSwitch: 'http://localhost:8080/actuator/shutdown'
 };

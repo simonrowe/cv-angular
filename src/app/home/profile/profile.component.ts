@@ -15,32 +15,26 @@ import {debounceTime} from 'rxjs/operator/debounceTime';
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
-export class ProfileComponent implements OnInit, AfterViewChecked {
+export class ProfileComponent implements OnInit {
 
 
   @Input() user: User;
 
   public skills: Skill[];
-  headline: Headline = new Headline('');
-  headlineForm: FormGroup;
-  headlineSuccessMessage: string;
-  private _headlineSuccess = new Subject<string>();
-  headlineEdit: boolean = false;
+
+  profileDescription: string;
+
 
   constructor(private http: HttpClient, private fb: FormBuilder, private renderer: Renderer2) {
-    this.headlineForm = fb.group({
-    });
-  }
-  ngAfterViewChecked(): void {
-    if (this.headlineEdit) {
-      this.renderer.selectRootElement('#headlineInput').focus();
-    }
   }
 
+
   ngOnInit() {
-    this.http.get(environment.headline).subscribe((headline: Headline) => {
-      this.headline = headline;
+
+    this.http.get(environment.profileDescription, {responseType: 'text'}).subscribe((profileDescription: string) => {
+      this.profileDescription = profileDescription;
     });
+
     this.skills = [new Skill('Java', 92,[new Skill('1.4', 8), new Skill('5', 8),  new Skill('6', 8),
       new Skill ('7', 9.5), new Skill('8', 9)]),
     new Skill('Spring', 95,[new Skill('Boot', 9.5), new Skill('Cloud', 8), new Skill('Data', 9.5),
@@ -60,24 +54,6 @@ export class ProfileComponent implements OnInit, AfterViewChecked {
     new Skill('UI', 80, [new Skill('Angular JS', 7.5), new Skill('Angular', 8.5), new Skill('HTML5', 7.5),
       new Skill('CSS3', 7.5), new Skill('JQuery', 8.5), new Skill('Javascript', 8),
       new Skill('TypeScript', 8), new Skill('JSTL', 9.5)])];
-    this._headlineSuccess.subscribe((message) => this.headlineSuccessMessage = message);
-    debounceTime.call(this._headlineSuccess, 3000).subscribe(() => this.headlineSuccessMessage = null);
-
-  }
-
-  public canEdit(): boolean {
-    return !isNullOrUndefined(this.user) && this.user.admin;
-  }
-
-  public save(): void {
-    this.http.post(environment.headline + '/save', this.headline).subscribe(() => {
-      this.headlineEdit = false;
-      this._headlineSuccess.next('Headline saved sucessfully');
-    });
-  }
-
-  public toggleHeadlineEdit(): void {
-    this.headlineEdit = !this.headlineEdit;
   }
 
 }

@@ -9,5 +9,6 @@ export const environment = {
   oauthRedirectUrl: 'https://cv-web-app.cfapps.io',
   userInfo : 'https://cv-user-service.cfapps.io/user',
   headline : 'https://cv-user-service.cfapps.io/profile/headline',
+  profileDescription : 'https://cv-user-service.cfapps.io/profile/description',
   killSwitch: 'https://cv-user-service.cfapps.io/actuator/shutdown'
 };

@@ -2,17 +2,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <ngb-alert *ngIf="headlineSuccessMessage" type="success" (close)="headlineSuccessMessage = null">{{ headlineSuccessMessage }}</ngb-alert>
-      <div class="m-title c-align">
-        <h2>Simon Rowe</h2>
-        <h6 [hidden]="headlineEdit">{{headline.headline}} <i *ngIf="canEdit()" class="fas fa-edit" (click)="toggleHeadlineEdit()"></i></h6>
-
-        <form [hidden]="!headlineEdit" [formGroup]="headlineForm"
-                  (ngSubmit)="save()"
-                  class="ui form">  <div class="input-group" ><input type="text" id="headlineInput" class="form-control"
-                                                                     [ngModelOptions]="{standalone: true}"
-                                          [(ngModel)]="headline.headline" /></div></form>
-      </div>
+      <app-profile-headline [user]="user"></app-profile-headline>
     </div>
   </div>
   <div class="row">
@@ -21,12 +11,8 @@
     </div>
     <div class="col-md-4">
       <h5>Profesional Profile</h5>
-     <p>I am driven to achieve real business value in the shortest time possible through the power of scalable software, utilizing open source technologies, mainly surrounding java and the spring framework.
-     </p><p>
-      With over 13 years of developing, architecting and running java based web applications, my professional experience has spanned many industries from investment banking to media, across multiple countries. My mantra stays the same – keep it simple! Nobody benefits from complicated out of hours releases of monoliths, inherent with risks.
-    </p><p>
-      This is where my skill and passion for Java, Spring, Docker, Cucumber, Git and AWS becomes one of my greatest assets. Whether it be cultivating new development comprising of CI pipelines with zero outage cloud deployments, to architecture of scalable serverless applications at AWS, I have a proven track record of delivering business value whilst mitigating risk.
-    </p>
+      <div [innerHTML]="profileDescription"></div>
+
 
       <div class="profile-widget">
         <h5>Social Profiles</h5>
