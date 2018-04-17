@@ -1,5 +1,5 @@
 import {EventEmitter, Injectable, OnInit} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import {User} from '../model/user';
 import {isNullOrUndefined, isUndefined} from 'util';
 import {environment} from '../../environments/environment';
@@ -21,7 +21,9 @@ export class AuthenticationService {
   }
 
   public attemptAuthentication(): void {
-      localStorage.setItem('Authorization', this.oAuthService.getIdToken());
+      if (!isNullOrUndefined(this.oAuthService.getIdToken())) {
+        localStorage.setItem('Authorization', this.oAuthService.getIdToken());
+      }
       this.http.get(environment.userInfo).subscribe((res: User) => {
         this.authenticate(res);
       });
@@ -54,6 +56,7 @@ export class AuthenticationService {
 
   public logout(): void{
     localStorage.removeItem('user');
+    localStorage.removeItem('Authorization');
     this.authenticationEventEmmitter.emit('logout');
   }
 

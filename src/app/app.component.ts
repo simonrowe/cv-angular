@@ -15,11 +15,14 @@ export class AppComponent {
 
   constructor(private oauthService: OAuthService, private authenticationService: AuthenticationService) {
     this.oauthService.configure(noDiscoveryAuthConfig);
-    this.authenticationService.logout();
-    this.oauthService.tryLogin().then(() => {
-      console.log('id token', this.oauthService.getIdToken());
+    if (this.authenticationService.isAuthenticated()){
       this.authenticationService.attemptAuthentication();
-    });
+    } else {
+      this.oauthService.tryLogin().then(() => {
+        console.log('id token', this.oauthService.getIdToken());
+        this.authenticationService.attemptAuthentication();
+      });
+    }
   }
 
 }

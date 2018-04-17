@@ -21,7 +21,7 @@ export class ProfileComponent implements OnInit, AfterViewChecked {
   @Input() user: User;
 
   public skills: Skill[];
-  headline: Headline;
+  headline: Headline = new Headline('');
   headlineForm: FormGroup;
   headlineSuccessMessage: string;
   private _headlineSuccess = new Subject<string>();

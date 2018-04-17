@@ -1,6 +1,6 @@
 import {AuthenticationService} from './authentication.service';
 import { Injectable } from '@angular/core';
-import { HttpInterceptor } from '@angular/common/http';
+import {HttpErrorResponse, HttpInterceptor} from '@angular/common/http';
 import { HttpRequest } from '@angular/common/http';
 import { HttpHandler } from '@angular/common/http';
 import { HttpEvent } from '@angular/common/http';
@@ -15,11 +15,13 @@ export class CustomHttpInterceptorService implements HttpInterceptor {
   constructor(private authenticationService: AuthenticationService) {}
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    return Observable.fromPromise(this.handleAccess(request, next));
+    return this.handleAccess(request, next).catch((err: any) => {
+      console.log('error', err);
+      return Observable.of(err);
+    });
   }
 
-  private async handleAccess(request: HttpRequest<any>, next: HttpHandler):
-  Promise<HttpEvent<any>> {
+  private  handleAccess(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const token = this.authenticationService.jwtToken();
     let changedRequest = request;
     // HttpHeader object immutable - copy values
@@ -36,7 +38,7 @@ export class CustomHttpInterceptorService implements HttpInterceptor {
 
     changedRequest = request.clone({
       headers: newHeader});
-    return next.handle(changedRequest).toPromise();
+    return next.handle(changedRequest);
   }
 
 }

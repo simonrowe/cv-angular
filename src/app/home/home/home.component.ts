@@ -18,7 +18,11 @@ export class HomeComponent implements OnInit {
 
   constructor(private authenticationService: AuthenticationService) {
       this.authenticationService.authenticationEventEmmitter.subscribe((loginEvent: string) => {
-          this.user = this.authenticationService.getAuthenticatedUser();
+          if (loginEvent === 'login') {
+            this.user = this.authenticationService.getAuthenticatedUser();
+          } else {
+            this.user = null;
+          }
       });
   }
 
